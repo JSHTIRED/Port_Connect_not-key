@@ -5,8 +5,6 @@
 app.c는 stm32용 파일임 
 ---
 
-
-
 iot시스템의 보안은 key라는 고유의 비밀번호를 설정해 보안을 하는 방식임
 그러나 key방식의 보안은 무한한 시도가 가능하다면 100%확률로 해킹이 가능하다는 문제가 존재
 이를 해결하기 위해서 주기적으로 랜덤한 port번호를 생성하고 통신하여 보안성을 높이는 방법을 고안함
@@ -17,12 +15,27 @@ To solve this problem, we devised a method to increase security by periodically 
 In order to improve security in the absence of a key code,   
 this project communicates by giving serial port numbers rather than the client using the id:password and key method.)  
 
-코드는 다음과 같은 방식으로 동작함 server와 client의 통신: client(sock 생성 후 연결 대기) -> server(연결 후 sock을 읽어오고 난수값을 저장하여 전송) -> client1,2반복
--> client(server에서 받아온 난수를 port로 사용하여 연결을 시도함) -> server(난수값을 port로 지정하여 accept) -> client1,2반복 -> 반복
+```mermaid
+---
+title: connection between server and client
+---
+flowchart TD
+    A[client] -->  |socket connect, accept random number port| B[server]
+    B --> |read socket and random number send| A
+    C[client1] -->  |socket connect, accept random number port| B
+    B --> |ead socket and random number send| C
+    D[client2] -->  |socket connect, accept random number port| B
+    B --> |ead socket and random number send| D
+```
 // 추가로 랜덤한 변수를 uint32형으로 전송하여 port번호에 대한 보안성을 향상시킴
+```mermaid
 (The code operates in the following manner.   
-Communication between server and client: client (creates sock and waits for connection) -> server (after connection, reads sock, stores random number value and sends it) -> repeats client 1 and 2.
--> client (attempts to connect using the random number received from the server as the port) -> server (accepts by specifying the random number as the port) -> repeat client 1, 2 -> repeat
+Communication between server and client: client (creates sock and waits for connection)  
+-> server (after connection, reads sock, stores random number value and sends it)  
+-> repeats client 1 and 2.  
+-> client (attempts to connect using the random number received from the server as the port)  
+-> server (accepts by specifying the random number as the port)   
+-> repeat client 1, 2 -> repeat  
 // Additional random variables are sent as uint32 type to improve port number security.)
 
 
