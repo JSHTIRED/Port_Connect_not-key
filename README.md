@@ -28,7 +28,7 @@ flowchart TD
     B --> |ead socket and random number send| D
 ```
 // 추가로 랜덤한 변수를 uint32형으로 전송하여 port번호에 대한 보안성을 향상시킴
-```mermaid
+
 (The code operates in the following manner.   
 Communication between server and client: client (creates sock and waits for connection)  
 -> server (after connection, reads sock, stores random number value and sends it)  
