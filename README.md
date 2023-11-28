@@ -20,12 +20,12 @@ this project communicates by giving serial port numbers rather than the client u
 title: connection between server and client
 ---
 flowchart TD
-    A[client] -->  |socket connect, accept random number port| B[server]
+    A[client] -->  |socket connect,\n accept random number port| B[server]
     B --> |read socket and random number send| A
-    C[client1] -->  |socket connect, accept random number port| B
-    B --> |ead socket and random number send| C
-    D[client2] -->  |socket connect, accept random number port| B
-    B --> |ead socket and random number send| D
+    C[client1] -->  |socket connect,\n accept random number port| B
+    B --> |read socket and random number send| C
+    D[client2] -->  |socket connect,\n accept random number port| B
+    B --> |read socket and random number send| D
 ```
 // 추가로 랜덤한 변수를 uint32형으로 전송하여 port번호에 대한 보안성을 향상시킴
 
