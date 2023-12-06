@@ -43,3 +43,12 @@ Communication between server and client: client (creates sock and waits for conn
 
 
 ![image](https://github.com/JSHTIRED/Port_Connect_not-key/assets/143377935/3ea9b947-cb7f-43f6-8000-e18fa15ec30f)
+
+
+
+---Project Review
+" what is different to maintaining the connection after a single communication? "
+" well this project can control time. 
+for example if server device attack by DoS, server disconnect and change port return connect.
+and evade DoS"
+---
