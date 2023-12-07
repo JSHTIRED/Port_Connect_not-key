@@ -46,9 +46,32 @@ Communication between server and client: client (creates sock and waits for conn
 
 
 
----Project Review
+---
+Project Review
+---
 " what is different to maintaining the connection after a single communication? "
 " well this project can control time. 
 for example if server device attack by DoS, server disconnect and change port return connect.
 and evade DoS"
----
+```mermaid
+sequenceDiagram
+    participant server
+    participant client
+    participant bad_client
+loop normal
+    server->>server : create random port number1
+    server->>client : connect bt TCP/ip or UDP by defualt port number
+    client->>server : some data
+    server->>client : send random port number1
+end
+loop this_program
+    bad_client->>server : Dos attack by defualt port number TCP/ip
+    server-->|x|client : disconnect all
+    server->>server : change port number by random port number1
+    server->>server : create random port number2
+    server->>client : connect bt TCP/ip or UDP by random port number1
+    bad_client-->server: Dos attack by defualt port number TCP/ip
+    client->>server : some data
+    server->>client : send random port number2
+end
+```
