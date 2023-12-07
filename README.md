@@ -70,7 +70,7 @@ loop this_program
     server->>server : change port number by random port number1
     server->>server : create random port number2
     server->>client : connect bt TCP/ip or UDP by random port number1
-    bad_client-->server: Dos attack by defualt port number TCP/ip
+    bad_client-->server: Dos attack by defualt port number TCP/ip =>fail
     client->>server : some data
     server->>client : send random port number2
 end
