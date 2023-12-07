@@ -66,7 +66,7 @@ loop normal
 end
 loop this_program
     bad_client->>server : Dos attack by defualt port number TCP/ip
-    server-->|x|client : disconnect all
+    server-->client : disconnect all
     server->>server : change port number by random port number1
     server->>server : create random port number2
     server->>client : connect bt TCP/ip or UDP by random port number1
