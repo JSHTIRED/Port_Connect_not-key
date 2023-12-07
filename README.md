@@ -50,8 +50,8 @@ Communication between server and client: client (creates sock and waits for conn
 Project Review
 ---
 " what is different to maintaining the connection after a single communication? "  
-" well this project can control time. 
-for example if server device attack by DoS, server disconnect and change port return connect.
+" well this project can control time.   
+for example if server device attack by DoS, server disconnect and change port return connect.  
 and evade DoS"
 ```mermaid
 sequenceDiagram
